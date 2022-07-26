@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JsPractice</title>
+
+
+</head>
+<body>
+<input type="button" value="打开我的Github" id="openBtn">
+<input type="button" value="关闭我的Github" id="closeBtn">
+<h1 id="myTitle">
+    Hello World
+</h1>
+<script>
+    alert("Hello World");
+    document.write("Hello World!");
+    let title = document.getElementById("myTitle");
+    let fun = function (){
+        let flag = confirm("确定退出吗？");
+        if(flag){
+            close();
+        }else{
+            alert("继续使用");
+        }
+    }
+    fun();
+    let s = prompt("请输入内容");
+    title.innerHTML = s;
+    let openBtn = document.getElementById("openBtn");
+    let myGithub;
+    openBtn.onclick = function (){
+        myGithub = open("https://github.com/U2yyy");
+    }
+    let closeBtn = document.getElementById("closeBtn");
+    closeBtn.onclick = function () {
+        let flag = confirm("确定关闭吗");
+        if(flag){
+            myGithub.close();
+        }else{
+            alert("继续使用你的Github");
+        }
+    }
+</script>
+</body>
+</html>
