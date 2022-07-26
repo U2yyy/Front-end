@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location</title>
+
+</head>
+<body>
+    <input type="button" value="刷新" id="refresh">
+    <input type="button" value="进入我的Github页面" id="github">
+    <script>
+        let refresh = document.getElementById("refresh");
+        refresh.onclick = function (){
+            location.reload();
+        }
+        let myGithub = document.getElementById("github");
+        myGithub.onclick = function () {
+            location.href = "https://github.com/U2yyy";
+        }
+    </script>
+</body>
+</html>
