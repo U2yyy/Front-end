@@ -25,6 +25,23 @@
         td,th{
             border: solid black 1px;
         }
+        #select{
+            text-align: center;
+            height: 100px;
+            margin-top: 10px;
+        }
+        #selAll{
+            height: 25px;
+            font-size: 15px;
+        }
+        #cancel{
+            height: 25px;
+            font-size: 15px;
+        }
+        #backOf{
+            height: 25px;
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -38,12 +55,18 @@
 <table>
     <caption>学生信息表</caption>
     <tr>
+        <th><input type="checkbox"></th>
         <th>编号</th>
         <th>姓名</th>
         <th>性别</th>
         <th>操作</th>
     </tr>
 </table>
+<div id="select">
+    <input type="button" id="selAll" value="全选">
+    <input type="button" id="cancel" value="全不选">
+    <input type="button" id="backOf" value="反选">
+</div>
 
 <script>
     let submit = document.getElementById("submit");
@@ -63,6 +86,11 @@
         let del_text = document.createTextNode("删除");
         td_a.appendChild(del_text);
         td_del.appendChild(td_a);
+        //选择节点的创建
+        let td_sel = document.createElement("td");
+        let sel = document.createElement("input");
+        sel.setAttribute("type","checkbox");
+        td_sel.appendChild(sel);
         //创建新的文本节点用于储存输入框里面的文本
         let text_ID = document.createTextNode(myID);
         let text_name = document.createTextNode(myName);
@@ -74,6 +102,7 @@
         //创建表格行
         let tr = document.createElement("tr");
         //将表格单元添加为行的子节点
+        tr.appendChild(td_sel);
         tr.appendChild(td_ID);
         tr.appendChild(td_name);
         tr.appendChild(td_gender);

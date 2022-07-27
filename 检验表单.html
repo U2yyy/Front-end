@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检验表单</title>
+    <style>
+        #judge_username{
+            color: red;
+        }
+        #judge_password{
+            color: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            document.getElementById("form").onsubmit = function (){
+                return judgeUsername() && judgePassword();
+            }
+            document.getElementById("username").onblur = judgeUsername;
+        }
+        
+        let judgeUsername = function () {
+            let username = document.getElementById("username").value;
+            let reg_username = /^\w{6,12}$/;
+            let flag = reg_username.test(username);
+            let judge_username = document.getElementById("judge_username");
+            if(!flag){
+                judge_username.innerHTML = "您输入的用户名格式有误";
+            }else{
+                judge_username.innerHTML = "";
+            }
+            return flag;
+        }
+        let judgePassword = function () {
+            let password = document.getElementById("password").value;
+            let reg_password = /^\w{6,12}$/;
+            let flag = reg_password.test(password);
+            let judge_password = document.getElementById("judge_password");
+            if(!flag){
+                judge_password.innerHTML = "您输入的密码格式有误";
+            }else{
+                judge_password.innerHTML = "";
+            }
+            return flag;
+        }
+    </script>
+</head>
+<body>
+<form action="#" id="form" method="get" name="form">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" placeholder="请输入用户名" id="username"></td>
+            <span id="judge_username"></span>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" placeholder="请输入密码" id="password"></td>
+            <span id="judge_password"></span>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="注册"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
