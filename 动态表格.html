@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+    <style>
+        input{
+            height: 20px;
+        }
+        #submit{
+            height: 30px;
+        }
+        div{
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        table{
+            border: solid black 1px;
+            margin: auto;
+            width:560px;
+            text-align: center;
+        }
+
+        td,th{
+            border: solid black 1px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="请输入编号" id="ID">
+    <input type="text" placeholder="请输入姓名" id="name">
+    <input type="text" placeholder="请输入性别" id="gender">
+    <input id="submit" type="button" value="提交">
+</div>
+
+<table>
+    <caption>学生信息表</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+</table>
+
+<script>
+    let submit = document.getElementById("submit");
+    submit.onclick = function () {
+        //获取输入框里面的值
+        let myID = document.getElementById("ID").value;
+        let myName = document.getElementById("name").value;
+        let myGender = document.getElementById("gender").value;
+        //创建新的表格单元
+        let td_ID = document.createElement("td");
+        let td_name = document.createElement("td");
+        let td_gender = document.createElement("td");
+        //删除节点的创建
+        let td_del = document.createElement("td");
+        let td_a = document.createElement("a");
+        td_a.setAttribute("href","javascript:void(0);");
+        let del_text = document.createTextNode("删除");
+        td_a.appendChild(del_text);
+        td_del.appendChild(td_a);
+        //创建新的文本节点用于储存输入框里面的文本
+        let text_ID = document.createTextNode(myID);
+        let text_name = document.createTextNode(myName);
+        let text_gender = document.createTextNode(myGender);
+        //将输入框里面的文本添加为新的表格单元的子节点
+        td_ID.appendChild(text_ID);
+        td_name.appendChild(text_name);
+        td_gender.appendChild(text_gender);
+        //创建表格行
+        let tr = document.createElement("tr");
+        //将表格单元添加为行的子节点
+        tr.appendChild(td_ID);
+        tr.appendChild(td_name);
+        tr.appendChild(td_gender);
+        tr.appendChild(td_del);
+        //获取表格
+        let table = document.getElementsByTagName("table")[0];
+        //将行添加为表格的子节点
+        table.appendChild(tr);
+        //删除功能实现
+        td_a.onclick = function () {
+            table.removeChild(tr);
+        }
+        document.getElementById("ID").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("gender").value = "";
+    }
+</script>
+</body>
+</html>
