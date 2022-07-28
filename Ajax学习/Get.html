@@ -32,7 +32,7 @@
             //4.事件绑定 处理服务端发送的结果
             xhr.onreadystatechange = function () {
                 //判断服务端是否返回全部结果
-                if(xhr.readyState == 4){
+                if(xhr.readyState === 4){
                     //判断状态码
                     if(xhr.status>=200&&xhr.status<300){
                         console.log(xhr.status);//状态码
