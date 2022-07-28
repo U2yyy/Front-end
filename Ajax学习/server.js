@@ -24,6 +24,14 @@ app.all('/json-server',(require,response)=>{
     response.send(str);
 })
 
+app.get('/delay-server',(require,response)=>{
+    //设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    setTimeout(()=>{
+        response.send("延时响应");
+    },3000)
+})
+
 app.listen(8000,()=>{
     console.log("8000端口监听中...");
 })
