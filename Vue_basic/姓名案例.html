@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>姓名案例</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" v-model="firstName"><br/><br/>
+        <input type="text" v-model="lastName"><br/><br/>
+<!--在表达式比较复杂或者是需要调用函数时，应当使用这种形式输出函数返回值，如果不加括号这里将会返回整个函数-->
+        <span>{{fullName()}}</span>
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                firstName:'杨',
+                lastName:'沐尔'
+            },
+            methods:{
+                fullName(){
+                    return this.firstName.slice(0,3) + '-' + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
