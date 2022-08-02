@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+    <style>
+        #input{
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+  <div id="root">
+      <input @keydown.enter="myFun" type="text" placeholder="请输入内容" id="input">
+      <input @wheel="myFun" type="text" placeholder="滚轮显示内容，请输入内容">
+      <input @keydown.ctrl.s="myFun" type="text" placeholder="使用ctr+s显示内容，请输入内容">
+  </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name:'Vue'
+            },
+            methods:{
+                myFun(event){
+                    console.log(event);
+                    alert(event.target.value);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
