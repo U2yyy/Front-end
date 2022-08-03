@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气案例</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+      <h1>今天天气{{info}}</h1>
+      <input type="button" value="点我改变天气" @click="change">
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                isHot : true
+            },
+            computed: {
+                info() {
+                    return this.isHot ? '炎热' : '凉爽';
+                }
+            },
+            methods:{
+                change(){
+                    this.isHot = !this.isHot;//这段话也可以写到上面的@click="这里面"这里，因为简单语句是可以直接写上去的
+                }
+            }
+        })
+    </script>
+</body>
+</html>
