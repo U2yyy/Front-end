@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表排序</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <input type="text" placeholder="请输入查找值" v-model="keyword">
+    <ul>
+        <li v-for="(filPerson,index) in filPersons" :key="filPerson.ID">
+            {{filPerson.name}}--{{filPerson.gender}}--{{filPerson.age}}
+        </li>
+    </ul>
+    <input type="button" value="升序排列" @click="sortType = 1">
+    <input type="button" value="降序排列" @click="sortType = 2">
+    <input type="button" value="原始排列" @click="sortType = 0">
+</div>
+<script type="text/javascript">
+    new Vue({
+        el:'#root',
+        data:{
+            keyword:'',
+            sortType:0,//0表示原始排列，1表示升序排列，2表示降序排列
+            persons:[
+                {ID:'001',name:'杨沐尔',gender:'女',age:'19'},
+                {ID:'002',name:'李俊东',gender:'男',age:'20'},
+                {ID:'003',name:'小明',gender:'男',age:'53'},
+                {ID:'004',name:'周杰伦',gender:'男',age:'45'}
+            ]
+        },
+        computed:{
+            filPersons(){
+                const arr = this.persons.filter((person)=>{
+                    return person.name.indexOf(this.keyword) !== -1;
+                })
+                if(this.sortType !== 0){
+                        arr.sort((a,b)=>{
+                            if(this.sortType === 1){
+                                return a.age-b.age;
+                            }else{
+                                return b.age-a.age;
+                            }
+                        })
+                }
+                return arr;
+            }
+        },
+    })
+</script>
+</body>
+</html>
