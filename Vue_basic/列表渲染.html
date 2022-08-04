@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <ul>
+            <li v-for="(person,index) in persons" :key="index">
+                {{person.name}}--{{person.age}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data:{
+                persons:[{
+                    ID:'001',
+                    name:'小明',
+                    age:18
+                },{
+                    ID:'002',
+                    name:'杨沐尔',
+                    age:19
+                },{
+                    ID:'003',
+                    name:'李俊东',
+                    age:20
+                }]
+            }
+        })
+    </script>
+</body>
+</html>
