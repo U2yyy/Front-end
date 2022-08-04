@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1 v-if="a === 1">JS</h1>
+        <h1 v-show="a === 2">ES6</h1>
+        <h1 v-if="a === 3">TS</h1>
+        <input type="button" value="增加a值" @click="a++">
+
+        <template v-if="a === 0">
+            <h1>我是一个模板</h1>
+        </template>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data:{
+                a:0
+            }
+
+        })
+    </script>
+</body>
+</html>
