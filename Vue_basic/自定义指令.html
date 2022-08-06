@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1 v-u2y="a"></h1>
+        <button @click="changeU2y">改变U2y</button>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root'
+            ,
+            data:{
+                a:'U2y'
+            },
+            methods:{
+                changeU2y(){
+                    this.a = 'YME';
+                }
+            },
+            directives:{
+                u2y:{
+                    bind(element,binding){
+                        element.innerText = binding.value;
+                    },
+                    insert(element,binding){
+                        element.focus();
+                    },
+                    update(element,binding){
+                        element.innerText = binding.value;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
