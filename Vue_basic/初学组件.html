@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初学组件</title>
+    <script type="text/javascript" src="JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <my-component></my-component>
+    </div>
+    <script>
+        Vue.productionTip = false;
+        const myComponent = Vue.extend({
+            template:`
+              //这里注意一定要只使用一个根元素包裹住所有的结构，否则会报错
+              <div>
+              <h1>我的组件</h1>
+              <br>
+              <h2>姓名：{{name}}</h2>
+              <h2>年龄：{{age}}</h2>
+              <h2>住址：{{address}}</h2>
+              <button @click="change">点我改变人物</button>
+              </div>
+            `,
+            data(){
+                return{
+                    name:'U2y',
+                    age:'18',
+                    address:'Wuhan'
+                }
+            },
+            methods:{
+                change(){
+                    this.name = 'YME';
+                    this.age = 19;
+                    this.address = 'Hunan'
+                }
+            }
+        })
+        new Vue({
+            el:'#root',
+            components:{
+                //多单词时要使用'kebab-case'命名法或者是'CamelCase'命名法
+                'my-component':myComponent
+            }
+        })
+    </script>
+</body>
+</html>
