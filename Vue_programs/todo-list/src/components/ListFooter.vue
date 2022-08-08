@@ -1,7 +1,10 @@
 <template>
-  <div id="footer">
-    <input type="checkbox">Finished{{finish}}/All{{all}}
-    <button>Clear finished tasks</button>
+  <div id>
+    <div id="footer">
+      <input type="checkbox">Finished{{finish}}/All{{all}}
+      <button>Clear finished tasks</button>
+    </div>
+    <span id="ind">Created by U2y</span>
   </div>
 </template>
 
@@ -19,16 +22,27 @@ export default {
 
 <style scoped>
   #footer{
-    margin-top: 5px;
+    width: 97%;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
   }
   input{
     float: left;
   }
   button{
+    margin-top: 1px;
     margin-right: 5px;
     float: right;
     color: white;
     background: red;
     border-radius: 5px;
+    border:solid 1px black;
+  }
+  #ind{
+    font-family: "Cascadia Mono";
+    position: absolute;
+    right: 820px;
+    bottom: 530px;
   }
 </style>

@@ -22,7 +22,13 @@ export default {
 
 <style>
 #app {
-  margin:auto;
-  position: absolute;top:50%;left:50%;transform:translate(-50%,-50%);border: 1px solid;text-align:center;height: 400px;width:300px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+  border: 1px solid;
+  text-align:center;
+  height: 400px;
+  width:300px;
+  overflow: auto;
 }
 </style>
