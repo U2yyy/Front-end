@@ -8,16 +8,8 @@
 import ListMission from "@/components/ListMission";
 export default {
   name: "TodoList",
-  data(){
-    return {
-      todos:[
-        {ID:'001',name:'Dinner',done:true},
-        {ID:'002',name:'VideoGame',done:false},
-        {ID:'003',name:'Code',done:true}
-      ]
-    }
-  },
-  components:{ListMission}
+  components:{ListMission},
+  props:['todos']
 }
 </script>
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <ListInput></ListInput>
-    <TodoList></TodoList>
+    <ListInput :addTodos="addTodos"></ListInput>
+    <TodoList :todos="todos"></TodoList>
     <ListFooter></ListFooter>
   </div>
 </template>
@@ -16,6 +16,20 @@ export default {
     ListInput,
     ListFooter,
     TodoList
+  },
+  data(){
+    return {
+      todos:[
+        {ID:'001',name:'Dinner',done:true},
+        {ID:'002',name:'VideoGame',done:false},
+        {ID:'003',name:'Code',done:true}
+      ]
+    }
+  },
+  methods:{
+    addTodos(todoObj){
+      this.todos.unshift(todoObj);
+    }
   }
 }
 </script>

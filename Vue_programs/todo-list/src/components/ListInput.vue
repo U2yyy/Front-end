@@ -1,12 +1,13 @@
 <template>
   <div>
     <h1>To-DoList</h1>
-    <input id="inputBox" type="text" v-model="mission" @keydown.enter="DoInput" placeholder="Please input your task,press enter to add">
+    <input id="inputBox" type="text" v-model="mission" @keydown.enter="add" placeholder="Please input your task,press enter to add">
     <br>
   </div>
 </template>
 
 <script>
+import {nanoid} from 'nanoid';
 export default {
   name: "ListInput",
   date(){
@@ -14,9 +15,16 @@ export default {
       mission:''
     }
   },
+  props:['addTodos'],
   methods:{
-    DoInput(){
-
+    add(){
+      let todoMis = {
+        id:nanoid(),
+        name:this.mission,
+        done:false
+      }
+      if(!this.mission)return alert("Input is empty!")
+      this.addTodos(todoMis);
     }
   }
 }
