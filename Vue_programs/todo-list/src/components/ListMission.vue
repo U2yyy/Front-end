@@ -1,6 +1,6 @@
 <template>
-  <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="hang">
-    <input type="checkbox">{{mission}}
+  <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="hang"  @click="completed = !completed">
+    <input type="checkbox" :checked="completed">{{todoObj.name}}
     <button id="delete" v-show="selected">Delete</button>
   </div>
 </template>
@@ -10,11 +10,12 @@ export default {
   name: "ListMission",
   data(){
     return {
-      mission:'',
       selected:false,
-      hang:'notover'
+      hang:'notover',
+      completed:this.todoObj.done
     }
   },
+  props:['todoObj'],
   methods:{
      hangover(){
        this.hang = 'over';

@@ -26,6 +26,7 @@ export default {
     margin-top: 10px;
     margin-right: auto;
     margin-left: auto;
+    height: 170px;
   }
   input{
     float: left;
@@ -40,9 +41,9 @@ export default {
     border:solid 1px black;
   }
   #ind{
+    float: right;
     font-family: "Cascadia Mono";
-    position: absolute;
-    right: 820px;
-    bottom: 530px;
+    margin-bottom: 5px;
+    margin-right: 5px;
   }
 </style>
