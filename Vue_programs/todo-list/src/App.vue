@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <ListInput :addTodos="addTodos"></ListInput>
-    <TodoList :todos="todos" :selectList="selectList"></TodoList>
-    <ListFooter></ListFooter>
+    <TodoList :todos="todos" :selectList="selectList" :deleteList="deleteList"></TodoList>
+    <ListFooter :todos="todos"></ListFooter>
   </div>
 </template>
 <script>
@@ -33,6 +33,11 @@ export default {
     selectList(ID){
       this.todos.forEach((todoObj)=>{
         if(todoObj.ID === ID)todoObj.done = !todoObj.done;
+      })
+    },
+    deleteList(ID){
+      this.todos = this.todos.filter((todo)=>{
+        return todo.ID !== ID;
       })
     }
   }

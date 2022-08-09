@@ -26,6 +26,7 @@ export default {
       if(!this.mission_name)return alert("Input is empty!");
       this.addTodos(todoMis);
       e.target.value = '';
+      this.mission_name = '';
     }
   }
 }

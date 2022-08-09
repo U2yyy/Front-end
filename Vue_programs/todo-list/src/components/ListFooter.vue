@@ -1,7 +1,7 @@
 <template>
   <div id>
     <div id="footer">
-      <input type="checkbox">Finished{{finish}}/All{{all}}
+      <input type="checkbox">Finished({{ finishedOfAll }})/All({{todos.length}})
       <button>Clear finished tasks</button>
     </div>
     <span id="ind">Created by U2y</span>
@@ -11,10 +11,13 @@
 <script>
 export default {
   name: "ListFooter",
-  data(){
-    return{
-      all:'',
-      finish:''
+  props:['todos'],
+  computed:{
+    finishedOfAll(){
+      const finishedNum = this.todos.reduce((pre,current)=>{
+        return pre + (current.done ? 1 : 0);
+      },0);
+      return finishedNum;
     }
   }
 }
@@ -32,6 +35,7 @@ export default {
     float: left;
   }
   button{
+    cursor: pointer;
     margin-top: 1px;
     margin-right: 5px;
     float: right;

@@ -1,6 +1,6 @@
 <template>
   <div id="table">
-      <ListMission v-for="todo in todos" :key="todo.ID" :todoObj="todo" :selectList="selectList"></ListMission>
+      <ListMission v-for="todo in todos" :key="todo.ID" :todoObj="todo" :selectList="selectList" :deleteList="deleteList" ></ListMission>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import ListMission from "@/components/ListMission";
 export default {
   name: "TodoList",
   components:{ListMission},
-  props:['todos','selectList']
+  props:['todos','selectList','deleteList']
 }
 </script>
 <style scoped>
