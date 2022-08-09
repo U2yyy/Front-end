@@ -12,7 +12,7 @@
 import {nanoid} from 'nanoid';
 export default {
   name: "ListInput",
-  date(){
+  data(){
     return {
       mission_name:''
     }
