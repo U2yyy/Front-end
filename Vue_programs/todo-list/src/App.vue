@@ -19,6 +19,7 @@ export default {
   },
   data(){
     return {
+      //所有任务的数据来源，这里是默认数据
       todos:[
         {ID:'001',name:'Dinner',done:true},
         {ID:'002',name:'VideoGame',done:false},
@@ -27,25 +28,30 @@ export default {
     }
   },
   methods:{
+    //添加数据的方法
     addTodos(todoObj){
       this.todos.unshift(todoObj);
     },
+    //这是绑定在checkbox上的方法，即选中当前任务，改变任务完成状态
     selectList(ID){
       this.todos.forEach((todoObj)=>{
         if(todoObj.ID === ID)todoObj.done = !todoObj.done;
       })
     },
+    //绑定在Delete按钮上的方法，删除当前任务
     deleteList(ID){
       this.todos = this.todos.filter((todo)=>{
         return todo.ID !== ID;
       })
     },
+    //绑定在全选按钮上的方法，以实现全选或全不选
     allChange(isAll){
       this.todos.forEach((todoObj)=>{
         if(isAll)todoObj.done = false;
         else todoObj.done = true;
       })
     },
+    //清除所有已完成的任务
     clear(){
       if(!confirm("clear all finished tasks?"))return;
       this.todos = this.todos.filter((todoObj)=>{
