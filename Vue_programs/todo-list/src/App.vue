@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ListInput :addTodos="addTodos"></ListInput>
-    <TodoList :todos="todos"></TodoList>
+    <TodoList :todos="todos" :selectList="selectList"></TodoList>
     <ListFooter></ListFooter>
   </div>
 </template>
@@ -29,6 +29,11 @@ export default {
   methods:{
     addTodos(todoObj){
       this.todos.unshift(todoObj);
+    },
+    selectList(ID){
+      this.todos.forEach((todoObj)=>{
+        if(todoObj.ID === ID)todoObj.done = !todoObj.done;
+      })
     }
   }
 }
@@ -41,7 +46,7 @@ export default {
   border-radius: 2px;
   border: 1px solid;
   text-align:center;
-  height: 400px;
+  height: auto;
   width:300px;
   overflow: auto;
 }

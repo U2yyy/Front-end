@@ -1,5 +1,5 @@
 <template>
-  <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="missionStyle"  @click="completed = !completed">
+  <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="missionStyle"  @click="changeSel(todoObj.ID)">
     <input type="checkbox" :checked="completed">{{todoObj.name}}
     <button id="delete" v-show="selected">Delete</button>
   </div>
@@ -20,7 +20,7 @@ export default {
       }
     }
   },
-  props:['todoObj'],
+  props:['todoObj','selectList'],
   methods:{
      hangover(){
        this.missionStyle.over = true;
@@ -31,6 +31,10 @@ export default {
       this.missionStyle.over = false;
       this.missionStyle.notover = true;
        this.selected = false;
+    },
+    changeSel(ID){
+      this.completed = !this.completed;
+      this.selectList(ID);
     }
   },
   mounted() {

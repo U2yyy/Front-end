@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>To-DoList</h1>
-    <input id="inputBox" type="text" v-model="mission" @keydown.enter="add" placeholder="Please input your task,press enter to add">
+    <input id="inputBox" type="text" v-model="mission_name" @keyup.enter="add" placeholder="Please input your task,press enter to add">
     <br>
   </div>
 </template>
@@ -12,19 +12,20 @@ export default {
   name: "ListInput",
   date(){
     return {
-      mission:''
+      mission_name:''
     }
   },
   props:['addTodos'],
   methods:{
-    add(){
+    add(e){
       let todoMis = {
         id:nanoid(),
-        name:this.mission,
+        name:this.mission_name,
         done:false
       }
-      if(!this.mission)return alert("Input is empty!")
+      if(!this.mission_name)return alert("Input is empty!");
       this.addTodos(todoMis);
+      e.target.value = '';
     }
   }
 }
