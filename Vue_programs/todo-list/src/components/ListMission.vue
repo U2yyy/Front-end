@@ -1,5 +1,5 @@
 <template>
-  <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="hang"  @click="completed = !completed">
+  <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="missionStyle"  @click="completed = !completed">
     <input type="checkbox" :checked="completed">{{todoObj.name}}
     <button id="delete" v-show="selected">Delete</button>
   </div>
@@ -12,24 +12,43 @@ export default {
     return {
       selected:false,
       hang:'notover',
-      completed:this.todoObj.done
+      completed:this.todoObj.done,
+      missionStyle:{
+        through:false,
+        notover:true,
+        over:false
+      }
     }
   },
   props:['todoObj'],
   methods:{
      hangover(){
-       this.hang = 'over';
+       this.missionStyle.over = true;
+       this.missionStyle.notover = false;
        this.selected = true;
      },
     passaway(){
-       this.hang = 'notover';
+      this.missionStyle.over = false;
+      this.missionStyle.notover = true;
        this.selected = false;
     }
+  },
+  mounted() {
+    if(this.completed)this.missionStyle.through = true;
+    else this.missionStyle.through = false;
+  },
+  updated() {
+    if(this.completed)this.missionStyle.through = true;
+    else this.missionStyle.through = false;
   }
 }
 </script>
 
 <style scoped>
+  .through{
+    text-line-through: single;
+    text-decoration: line-through;
+  }
   input{
     float: left;
   }
@@ -40,6 +59,7 @@ export default {
     background: #bab8b8;
   }
   #mission{
+    user-select: none;
     margin-left: auto;
     margin-right: auto;
     width: 97%;
