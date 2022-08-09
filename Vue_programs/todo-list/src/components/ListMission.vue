@@ -1,4 +1,5 @@
 <template>
+<!--  //这一块是所有的任务选项，以及配置了一些class标准-->
   <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="missionStyle"  @click="changeSel(todoObj.ID)">
     <input type="checkbox" :checked="todoObj.done">{{todoObj.name}}
     <button id="delete" v-show="selected" @click="deleteMis(todoObj.ID)">Delete</button>
@@ -20,6 +21,7 @@ export default {
       }
     }
   },
+  //传入的方法是从App传入TodoList，在传入该组件，然后实现功能
   props:['todoObj','selectList','deleteList'],
   methods:{
      hangover(){
