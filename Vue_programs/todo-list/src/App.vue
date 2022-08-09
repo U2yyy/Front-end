@@ -2,7 +2,7 @@
   <div id="app">
     <ListInput :addTodos="addTodos"></ListInput>
     <TodoList :todos="todos" :selectList="selectList" :deleteList="deleteList"></TodoList>
-    <ListFooter :todos="todos"></ListFooter>
+    <ListFooter :todos="todos" :allChange="allChange" :clear="clear"></ListFooter>
   </div>
 </template>
 <script>
@@ -38,6 +38,18 @@ export default {
     deleteList(ID){
       this.todos = this.todos.filter((todo)=>{
         return todo.ID !== ID;
+      })
+    },
+    allChange(isAll){
+      this.todos.forEach((todoObj)=>{
+        if(isAll)todoObj.done = false;
+        else todoObj.done = true;
+      })
+    },
+    clear(){
+      if(!confirm("clear all finished tasks?"))return;
+      this.todos = this.todos.filter((todoObj)=>{
+        return !todoObj.done;
       })
     }
   }

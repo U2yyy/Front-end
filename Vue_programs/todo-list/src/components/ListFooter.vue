@@ -1,8 +1,8 @@
 <template>
   <div id>
-    <div id="footer">
-      <input type="checkbox">Finished({{ finishedOfAll }})/All({{todos.length}})
-      <button>Clear finished tasks</button>
+    <div id="footer" v-show="todos.length">
+      <input type="checkbox" v-model="isAll" @change="allChange(isAll)">Finished({{ finishedOfAll }})/All({{todos.length}})
+      <button @click="clear">Clear finished tasks</button>
     </div>
     <span id="ind">Created by U2y</span>
   </div>
@@ -11,13 +11,21 @@
 <script>
 export default {
   name: "ListFooter",
-  props:['todos'],
+  props:['todos','allChange','clear'],
   computed:{
     finishedOfAll(){
       const finishedNum = this.todos.reduce((pre,current)=>{
         return pre + (current.done ? 1 : 0);
       },0);
       return finishedNum;
+    },
+    isAll:{
+      get(){
+        return this.finishedOfAll === this.todos.length;
+      },
+      set(value){
+        this.allChange(value);
+      }
     }
   }
 }

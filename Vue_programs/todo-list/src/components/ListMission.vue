@@ -1,6 +1,6 @@
 <template>
   <div id="mission" @mouseover="hangover" @mouseleave="passaway" :class="missionStyle"  @click="changeSel(todoObj.ID)">
-    <input type="checkbox" :checked="completed">{{todoObj.name}}
+    <input type="checkbox" :checked="todoObj.done">{{todoObj.name}}
     <button id="delete" v-show="selected" @click="deleteMis(todoObj.ID)">Delete</button>
   </div>
 </template>
@@ -42,11 +42,11 @@ export default {
     }
   },
   mounted() {
-    if(this.completed)this.missionStyle.through = true;
+    if(this.todoObj.done)this.missionStyle.through = true;
     else this.missionStyle.through = false;
   },
   updated() {
-    if(this.completed)this.missionStyle.through = true;
+    if(this.todoObj.done)this.missionStyle.through = true;
     else this.missionStyle.through = false;
   }
 }
