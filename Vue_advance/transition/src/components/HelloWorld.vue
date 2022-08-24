@@ -4,6 +4,10 @@
     <transition name="hello" appear>
       <h1 v-show="isShow">HelloWorld!</h1>
     </transition>
+    <button @click="isShow1=!isShow1">Click to show yme</button>
+    <transition name="yme" appear>
+      <h1 v-show='isShow1'>YME猪猪</h1>
+    </transition>
   </div>
 </template>
 
@@ -13,6 +17,7 @@ export default {
   data(){
     return{
       isShow:true,
+      isShow1:true
     }
   }
 }
@@ -33,5 +38,16 @@ export default {
     to{
       transform: translateX(0px);
     }
+  }
+
+  /* 另一种过渡方式，不需要使用关键帧动画 */
+  .yme-enter,.yme-leave-to{
+    transform: translateX(-100%);
+  }
+  .yme-enter-to,.yme-leave{
+    transform: translateX(0);
+  }
+  .yme-enter-active,.yme-leave-active{
+    transition: 1s linear;
   }
 </style>
