@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <hello-world></hello-world>
+    <animateCSS></animateCSS>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import animateCSS from "@/components/animateCSS";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    animateCSS
   }
 }
 </script>
