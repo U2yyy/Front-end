@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>axios基本使用</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.js"></script>
+</head>
+<body>
+    <button>发送GET请求</button>
+    <button>发送POST请求</button>
+    <button>发送PUT请求</button>
+    <button>发送DELETE请求</button>
+
+    <script>
+        const button = document.querySelectorAll('button')
+        button[0].onclick = function(){
+            axios({
+                method:'GET',
+                url:'http://localhost:3000/posts/1'
+            }).then(response=>{
+                console.log(response.data)
+            })
+        }
+        button[1].onclick = function(){
+            axios({
+                method:'POST',
+                url:'http://localhost:3000/posts',
+                data:{
+                    title:'U2y',
+                    author:'U2y'
+                }
+            }).then(response=>{
+                console.log(response)
+            })
+        }
+        button[2].onclick = function(){
+                axios({
+                    method:'PUT',
+                    url:'http://localhost:3000/posts/2',
+                    data:{
+                        title:'YME',
+                        author:'U2y'
+                    }
+                }).then(response=>{
+                console.log(response)
+            })
+        }
+        button[3].onclick = function(){
+            axios({
+                method:'DELETE',
+                url:'http://localhost:3000/posts/1',
+            }).then(response=>{
+                console.log(response)
+            })
+        }
+    </script>
+</body>
