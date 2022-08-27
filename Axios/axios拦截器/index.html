@@ -24,9 +24,14 @@
             axios({
                 method:'GET',
                 url:'http://localhost:3000/posts'
-            }).then(response=>{
-                alert(response)
-            })
+            }).then(
+                response=>{
+                    alert(response)
+                },
+                error=>{
+                    alert(error.message)
+                }
+            )
         }
     </script>
 </body>
