@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>axios拦截器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.js"></script>
+</head>
+<body>
+    <button>发送GET请求</button>
+
+    <script>
+        const button = document.querySelectorAll('button')
+        const controller = new AbortController()
+        axios.interceptors.request.use(function(config){
+            return config
+        },function(error){
+            return Promise.reject(error)
+        })
+        axios.interceptors.response.use(function(response){
+            return response.data
+        },function(error){
+            return Promise.reject(error)
+        })
+        button[0].onclick = function(){
+            axios({
+                method:'GET',
+                url:'http://localhost:3000/posts'
+            }).then(response=>{
+                alert(response)
+            })
+        }
+    </script>
+</body>
