@@ -1,5 +1,7 @@
 <template>
   <div class="row">
+    <h2 v-if="isBegin" style="margin: auto">Welcome to use !</h2>
+    <h2 v-if="isSearch" style="margin: auto">Loading...</h2>
     <div class="card" v-for="user in users" :key="user.login">
       <a :href="user.html_url" target="_blank">
         <img :src="user.avatar_url" style="width: 100px">
@@ -14,13 +16,20 @@ export default {
   name: "list",
   data(){
     return{
-      users:[]
+      users:[],
+      isBegin:true,
+      isSearch:false
     }
   },
   mounted() {
     this.$bus.$on('getUsers',(data)=>{
+      this.isSearch = !this.isSearch
       console.log('收到数据')
       this.users = data
+    })
+    this.$bus.$on('changeStatus',()=>{
+      this.isBegin = !this.isBegin
+      this.isSearch = !this.isSearch
     })
   }
 }
@@ -29,6 +38,7 @@ export default {
 <style scoped>
 .row{
   margin: 0 auto;
+  text-align: center;
 }
 .card {
   margin-left: 150px;

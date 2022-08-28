@@ -17,6 +17,7 @@ export default {
   },
   methods:{
     searchUsers(){
+      this.$bus.$emit('changeStatus')
       axios.get(`https://api.github.com/search/users?q=${this.userName}`).then(
           response => {
             console.log('发送数据')
