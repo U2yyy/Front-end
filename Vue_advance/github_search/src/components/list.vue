@@ -39,11 +39,12 @@ export default {
 .row{
   margin: 0 auto;
   text-align: center;
+  display: inline;
 }
 .card {
-  margin-left: 150px;
+  margin-left: 30px;
   float: left;
-  width: 20%;
+  width: 30%;
   padding: 0.75rem;
   margin-bottom: 2rem;
   border: 1px solid #efefef;
