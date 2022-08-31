@@ -7,13 +7,13 @@ const actions = {
     add(context,value){
         //这里要使用context，比较容易犯错去使用store
         if(context.state.number%2===0){
-            context.commit('add',value)
+            context.commit('ADD',value)
         }
     }
 }
 
 const mutations = {
-    add(state,value){
+    ADD(state,value){
         state.number += value
     }
 }

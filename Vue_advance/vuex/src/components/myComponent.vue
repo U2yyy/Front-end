@@ -7,15 +7,19 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: "myComponent",
   methods:{
     addNum(){
-      this.$store.commit('add',1)
+      this.$store.commit('ADD',1)
     },
     ifAdd(){
       this.$store.dispatch('add',1)
     }
+  },
+  computed:{
+    ...mapState(['number'])
   }
 }
 </script>
