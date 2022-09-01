@@ -1,22 +1,24 @@
 <template>
   <div>
     <h1>{{$store.state.number}}</h1>
-    <button @click="addNum">Click to add 1</button>
-    <button @click="ifAdd">Click to add 1(with conditions)</button>
+    <button @click="addNum(1)">Click to add 1</button>
+    <button @click="ifAdd(1)">Click to add 1(with conditions)</button>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapActions,mapMutations} from 'vuex'
 export default {
   name: "myComponent",
   methods:{
-    addNum(){
+    /* addNum(){
       this.$store.commit('ADD',1)
-    },
-    ifAdd(){
+    }, */
+    ...mapMutations({addNum:'ADD'}),
+    /* ifAdd(){
       this.$store.dispatch('add',1)
-    }
+    } */
+    ...mapActions({ifAdd:'add'})
   },
   computed:{
     ...mapState(['number'])
