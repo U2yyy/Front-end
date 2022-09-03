@@ -28,7 +28,7 @@ export default {
       this.users = data
     })
     this.$bus.$on('changeStatus',()=>{
-      this.isBegin = !this.isBegin
+      this.isBegin = false
       this.isSearch = !this.isSearch
     })
   }
