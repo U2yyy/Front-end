@@ -7,14 +7,12 @@
 </template>
 
 <script>
-import Category from "@/components/Category"
-import Home from "@/components/Home";
+
 
 export default {
   name: 'App',
   components: {
-    Category,
-    Home
+
   }
 }
 </script>
