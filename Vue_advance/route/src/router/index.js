@@ -1,6 +1,7 @@
 import VueRouter from "vue-router"
-import Home from "../components/Home"
-import Category from "@/components/Category"
+import Home from "../pages/Home"
+import Category from "@/pages/Category"
+import Blog from "../pages/Blog"
 
 export default new VueRouter({
     routes:[
@@ -10,7 +11,13 @@ export default new VueRouter({
         },
         {
             path:'/category',
-            component: Category
+            component: Category,
+            children:[
+                {
+                    path:'blog',
+                    component: Blog
+                }
+            ]
         }
     ]
 })
