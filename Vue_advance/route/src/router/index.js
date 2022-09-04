@@ -20,7 +20,8 @@ export default new VueRouter({
                     children:[
                         {
                             name:'article',
-                            path:'article',
+                            // path:'article',
+                            path:'article/:id/:title',
                             component: Article
                         }
                     ]
