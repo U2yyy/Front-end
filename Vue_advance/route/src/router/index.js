@@ -19,6 +19,7 @@ export default new VueRouter({
                     component: Blog,
                     children:[
                         {
+                            name:'article',
                             path:'article',
                             component: Article
                         }
