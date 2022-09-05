@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header/>
     <router-link to="/home">Home</router-link>
     <router-link to="/category">category</router-link>
     <router-view></router-view>
@@ -7,11 +8,12 @@
 </template>
 
 <script>
-
+import Header from "@/components/Header"
 
 export default {
   name: 'App',
   components: {
+    Header
 
   }
 }
