@@ -4,7 +4,8 @@ import Category from "@/pages/Category"
 import Blog from "../pages/Blog"
 import Article from "@/pages/Article"
 
-export default new VueRouter({
+const router =  new VueRouter({
+    mode:"history",
     routes:[
         {
             path:'/home',
@@ -30,3 +31,10 @@ export default new VueRouter({
         }
     ]
 })
+
+router.beforeEach((to, from, next)=>{
+    console.log("router.beforeEach has been called")
+    next()
+})
+
+export default router
