@@ -14,6 +14,9 @@ const router =  new VueRouter({
         {
             path:'/category',
             component: Category,
+            beforeEnter(to,from,next){
+                next()
+            },
             children:[
                 {
                     path:'blog',

@@ -18,6 +18,14 @@ export default {
   },
   deactivated() {
     console.log('u leaved')
+  },
+  beforeRouteEnter(to,from,next){
+    console.log('组件内路由守卫进入了')
+    next()
+  },
+  beforeRouteLeave(to,from,next){
+    console.log('组件内路由守卫离开了')
+    next()
   }
 }
 </script>
