@@ -21,7 +21,9 @@
       </li>
     </ul>
     <br>
-    <router-view></router-view>
+    <keep-alive include="Article">
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
